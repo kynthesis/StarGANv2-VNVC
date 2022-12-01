@@ -8,7 +8,7 @@ load_only_params: false
 fp16_run: true
 
 train_data: "vivos/train_list.txt"
-val_data: "vivos/test_list.txt"
+val_data: "vivos/val_list.txt"
 
 F0_path: "Utils/JDC/bst.t7"
 ASR_config: "Utils/ASR/config.yml"
