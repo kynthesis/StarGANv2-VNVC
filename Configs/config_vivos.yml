@@ -1,14 +1,14 @@
 log_dir: "Models/VIVOS"
-save_freq: 2
+save_freq: 1
 device: "cuda"
-epochs: 150
-batch_size: 5
-pretrained_model: ""
+epochs: 10
+batch_size: 2
+pretrained_model: "Models/epoch_00150.pth"
 load_only_params: false
 fp16_run: true
 
-train_data: "vivos/train_list.txt"
-val_data: "vivos/val_list.txt"
+train_data: "VIVOS/train_list.txt"
+val_data: "VIVOS/val_list.txt"
 
 F0_path: "Utils/JDC/bst.t7"
 ASR_config: "Utils/ASR/config.yml"
@@ -25,7 +25,7 @@ model_params:
   dim_in: 64
   style_dim: 64
   latent_dim: 16
-  num_domains: 4
+  num_domains: 20
   max_conv_dim: 512
   n_repeat: 4
   w_hpf: 0
