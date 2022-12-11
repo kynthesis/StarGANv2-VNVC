@@ -91,7 +91,7 @@ def main(config_path):
     F0_model.load_state_dict(params)
     
     # build model
-    model, model_ema = build_model(Munch(config['model_params']), F0_model, ASR_model)
+    model, model_ema = build_model(Munch(config['model_params']), F0_model, ASR_model, modulated=True)
 
     scheduler_params = {
         "max_lr": float(config['optimizer_params'].get('lr', 2e-4)),
