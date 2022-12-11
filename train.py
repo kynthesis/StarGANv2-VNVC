@@ -37,8 +37,11 @@ torch.backends.cudnn.benchmark = True #
 
 @click.command()
 @click.option('-p', '--config_path', default='Configs/config.yml', type=str)
+@click.option('-m', '--modulated', default=False, is_flag=True, type=bool)
 
-def main(config_path):
+
+
+def main(config_path, modulated):
     config = yaml.safe_load(open(config_path))
 
     log_dir = config['log_dir']
@@ -91,7 +94,7 @@ def main(config_path):
     F0_model.load_state_dict(params)
     
     # build model
-    model, model_ema = build_model(Munch(config['model_params']), F0_model, ASR_model)
+    model, model_ema = build_model(Munch(config['model_params']), F0_model, ASR_model, modulated)
 
     scheduler_params = {
         "max_lr": float(config['optimizer_params'].get('lr', 2e-4)),
