@@ -1,8 +1,8 @@
 log_dir: "Models/VIVOS_MOD"
-save_freq: 1
+save_freq: 2
 device: "cuda"
-epochs: 150
-batch_size: 2
+epochs: 151
+batch_size: 16
 pretrained_model: ""
 load_only_params: false
 fp16_run: true
