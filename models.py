@@ -344,9 +344,8 @@ class GeneratorModulated(nn.Module):
             nn.Conv2d(dim_in, 1, 1, 1, 0),
         )
         self.F0_channel = F0_channel
-        self.legend = nn.Conv2d(1, 1, 3, 1, 1)
         # down/up-sampling blocks
-        repeat_num = 4  # int(np.log2(img_size)) - 4
+        repeat_num = 1  # int(np.log2(img_size)) - 4
         if w_hpf > 0:
             repeat_num += 1
 
@@ -419,14 +418,8 @@ class GeneratorModulated(nn.Module):
                 mask = masks[0] if x.size(2) in [32] else masks[1]
                 mask = F.interpolate(mask, size=x.size(2), mode="bilinear")
                 x = x + self.hpf(mask * cache[x.size(2)])
-        # print("RGB")
-        # print(rgb.shape)
-        legend = F.max_pool2d(rgb, kernel_size=2)
-        # print("LEGEND")
-        # print(legend.shape)
-        legend = legend.reshape((2, 1, 80, 192))
-        # print(legend.shape)
-        return F.leaky_relu(legend, 0.2)
+        
+        return rgb
 
 
 class MappingNetwork(nn.Module):
