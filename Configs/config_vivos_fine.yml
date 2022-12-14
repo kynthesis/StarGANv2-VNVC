@@ -1,9 +1,9 @@
 log_dir: "Models/VIVOS_FINE"
-save_freq: 5
+save_freq: 10
 device: "cuda"
 epochs: 51
 batch_size: 32
-pretrained_model: "Models/epoch_00150.pth"
+pretrained_model: "Models/epoch_00200.pth"
 load_only_params: false
 fp16_run: true
 
